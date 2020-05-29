@@ -19,9 +19,6 @@
 
     <!-- Location service. -->
     <string-array name="location_services">
-        <item>Ubicación de Baidu</item>
-        <item>Ubicación por IP de Baidu (Solo para China)</item>
-        <item>Ubicación de AMap</item>
         <item>API Nativa</item>
     </string-array>
     <string-array name="location_service_values">
