@@ -2,38 +2,37 @@
 
 ![Geometric Weather](https://github.com/WangDaYeeeeee/GeometricWeather/blob/master/work/preview_header.png)
 
-### app简介
+From the original app's
+[Play Store](https://play.google.com/store/apps/details?id=wangdaye.com.geometricweather)
+description:
 
-* 遵守google material design设计规范。
-* 纷繁灵动的动画。
-* 纯粹的体验。
-* 无任何常驻后台服务。
-* 提供天气通知。
-* 提供6种不同规格的桌面小部件。
-* 简化的操作层级。
+> Geometric Weather is a light and powerful weather app that provides you with
+> real-time temperature, air quality, 15-days weather forecast, and accurate
+> time-sharing trends.
 
-### 上架情况
+The original repository is
+[here](https://github.com/WangDaYeeeeee/GeometricWeather).
 
-* 酷安： http://www.coolapk.com/apk/wangdaye.com.geometricweather
-* google play： https://play.google.com/store/apps/details?id=wangdaye.com.geometricweather
+While a fantastic app overall, the original includes several closed-source
+binary blobs related to Chinese weather and location APIs.
 
+This fork removes all such proprietary binaries and related code to create a
+true FOSS option. I intend to keep it updated with upstream changes per release.
 
-### 联系作者
+### Notes
 
-* 在酷安Geometric Weather页面留言
-* wangdayeeeeee@gmail.com
+The original app included a handful of binaries in its
+[`app/libs`](https://github.com/WangDaYeeeeee/GeometricWeather/tree/master/app/libs)
+directory. `libindoor.so` and `liblocSDK7.so` appear to be related to Baidu's
+location and weather APIs from a cursory Google search.
 
+The entire `libs` directory has been removed. To simplify things, all
+China-specific API options have been removed as well; this means that
+AccuWeather is the only supported weather API at present, and the app will only
+use your device's built in location service.
 
-### PREVIEW
-
-![](https://github.com/WangDaYeeeeee/GeometricWeather/blob/master/preview/thumbnails/preview_home_day.png)
-![](https://github.com/WangDaYeeeeee/GeometricWeather/blob/master/preview/thumbnails/preview_home_day_hourly.png)
-![](https://github.com/WangDaYeeeeee/GeometricWeather/blob/master/preview/thumbnails/preview_home_night.png)
-![](https://github.com/WangDaYeeeeee/GeometricWeather/blob/master/preview/thumbnails/preview_alert.png)
-![](https://github.com/WangDaYeeeeee/GeometricWeather/blob/master/preview/thumbnails/preview_manage.png)
-![](https://github.com/WangDaYeeeeee/GeometricWeather/blob/master/preview/thumbnails/preview_search.png)
-![](https://github.com/WangDaYeeeeee/GeometricWeather/blob/master/preview/thumbnails/preview_widget.png)
-
+I was inspired to do this from [this issue thread](https://github.com/WangDaYeeeeee/GeometricWeather/issues/9) 
+for an F-Droid version. Hopefully, this helps the cause along.
 
 ### LICENSE
 
