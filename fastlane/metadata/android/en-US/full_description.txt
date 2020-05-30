@@ -1,0 +1,31 @@
+Geometric Weather FOSS is a free and open-source Android weather app.
+
+It's a fork of the original Geometric Weather app [1] with all proprietary
+dependencies and related code stripped out to make it eligible for inclusion on
+F-Droid.
+
+In the app, you'll find:
+
+- Real-time temperature
+- Daily forecasts up to 15 days, and hourly forecasts for the next 24 hours
+- Air quality and allergen information
+- Severe weather and precipitation alerts
+
+The app has a strong focus on design, with a simple, clean UX, smooth
+animations, and Material Design all over, plus lots of customizability:
+
+- Automatic dark theme
+- Custom icon themes
+- Large selection of home screen widgets for at-a-glance information
+- Live wallpaper
+
+At present, AccuWeather is the only supported weather API for the FOSS version.
+
+There's an option to donate to the original, upstream developer (WangDaYeeeeee
+on Github [2]) within the app. This FOSS fork [3] is maintained by
+mbestavros [4].
+
+[1]: https://github.com/WangDaYeeeeee/GeometricWeather
+[2]: https://github.com/WangDaYeeeeee
+[3]: https://github.com/mbestavros/GeometricWeather
+[4]: https://github.com/mbestavros
