@@ -19,9 +19,8 @@ import wangdaye.com.geometricweather.basic.model.location.Location;
 import wangdaye.com.geometricweather.basic.model.weather.Weather;
 import wangdaye.com.geometricweather.settings.SettingsOptionManager;
 import wangdaye.com.geometricweather.weather.SchedulerTransformer;
-import wangdaye.com.geometricweather.weather.api.AccuWeatherApi;
 import wangdaye.com.geometricweather.weather.api.OpenWeatherMapApi;
-import wangdaye.com.geometricweather.weather.converter.AccuResultConverter;
+import wangdaye.com.geometricweather.weather.converter.OWMResultConverter;
 import wangdaye.com.geometricweather.weather.interceptor.GzipInterceptor;
 import wangdaye.com.geometricweather.weather.json.accu.AccuAlertResult;
 import wangdaye.com.geometricweather.weather.json.accu.AccuAqiResult;
@@ -140,7 +139,7 @@ public class OWMWeatherService extends WeatherService {
                 (accuRealtimeResults,
                  accuDailyResult, accuHourlyResults, accuMinuteResult,
                  accuAlertResults,
-                 accuAqiResult) -> AccuResultConverter.convert(
+                 accuAqiResult) -> OWMResultConverter.convert(
                          context,
                          location,
                          accuRealtimeResults.get(0),
@@ -190,7 +189,7 @@ public class OWMWeatherService extends WeatherService {
         List<Location> locationList = new ArrayList<>();
         if (resultList != null && resultList.size() != 0) {
             for (AccuLocationResult r : resultList) {
-                locationList.add(AccuResultConverter.convert(null, r, zipCode));
+                locationList.add(OWMResultConverter.convert(null, r, zipCode));
             }
         }
         return locationList;
@@ -242,7 +241,7 @@ public class OWMWeatherService extends WeatherService {
                     public void onSucceed(AccuLocationResult accuLocationResult) {
                         if (accuLocationResult != null) {
                             List<Location> locationList = new ArrayList<>();
-                            locationList.add(AccuResultConverter.convert(location, accuLocationResult, null));
+                            locationList.add(OWMResultConverter.convert(location, accuLocationResult, null));
                             finalCallback.requestLocationSuccess(
                                     location.getLatitude() + "," + location.getLongitude(), locationList);
                         } else {
@@ -271,7 +270,7 @@ public class OWMWeatherService extends WeatherService {
                         if (accuLocationResults != null && accuLocationResults.size() != 0) {
                             List<Location> locationList = new ArrayList<>();
                             for (AccuLocationResult r : accuLocationResults) {
-                                locationList.add(AccuResultConverter.convert(null, r, zipCode));
+                                locationList.add(OWMResultConverter.convert(null, r, zipCode));
                             }
                             callback.requestLocationSuccess(query, locationList);
                         } else {
