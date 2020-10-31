@@ -5,6 +5,7 @@
     <!-- 날씨 제공처. -->
     <string-array name="weather_sources">
         <item>accuweather.com</item>
+        <item>Météo France (beta)</item>
     </string-array>
 
     <!-- 위치 서비스. -->

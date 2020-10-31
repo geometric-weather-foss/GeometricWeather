@@ -9,7 +9,8 @@ import wangdaye.com.geometricweather.basic.model.option.utils.OptionMapper;
 
 public enum WeatherSource {
 
-    ACCU("accu", 0xffef5823, "accuweather.com");
+    ACCU("accu", 0xffef5823, "accuweather.com"),
+    MF("mf", 0xff005892, "meteofrance.com");
 
     private String sourceId;
     @ColorInt private int sourceColor;
