@@ -8,9 +8,11 @@
     <!-- Chinese source. -->
     <string-array name="weather_sources">
         <item>accuweather.com</item>
+        <item>Météo France (beta)</item>
     </string-array>
     <string-array name="weather_source_values">
         <item>accu</item>
+        <item>mf</item>
     </string-array>
 
     <!-- Location service. -->

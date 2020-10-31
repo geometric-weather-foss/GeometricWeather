@@ -16,6 +16,7 @@ import wangdaye.com.geometricweather.db.DatabaseHelper;
 import wangdaye.com.geometricweather.weather.observer.BaseObserver;
 import wangdaye.com.geometricweather.weather.observer.ObserverContainer;
 import wangdaye.com.geometricweather.weather.service.AccuWeatherService;
+import wangdaye.com.geometricweather.weather.service.MfWeatherService;
 import wangdaye.com.geometricweather.weather.service.WeatherService;
 
 /**
@@ -38,6 +39,9 @@ public class WeatherHelper {
     @NonNull
     private static WeatherService getWeatherService(WeatherSource source) {
         switch (source) {
+            case MF:
+                return new MfWeatherService();
+
             default: // ACCU.
                 return new AccuWeatherService();
         }
@@ -72,13 +76,22 @@ public class WeatherHelper {
 
     public void requestLocation(Context context, String query, @NonNull final OnRequestLocationListener l) {
         searchServices = new WeatherService[] {
-                getWeatherService(WeatherSource.ACCU)
+                getWeatherService(WeatherSource.ACCU),
+                getWeatherService(WeatherSource.MF)
         };
 
         Observable<List<Location>> accu = Observable.create(emitter ->
                 emitter.onNext(searchServices[0].requestLocation(context, query)));
 
-        accu.compose(SchedulerTransformer.create())
+        Observable<List<Location>> mf = Observable.create(emitter ->
+                emitter.onNext(searchServices[1].requestLocation(context, query)));
+
+        Observable.zip(accu, mf, (accuList, mfList) -> {
+            List<Location> locationList = new ArrayList<>();
+            locationList.addAll(accuList);
+            locationList.addAll(mfList);
+            return locationList;
+        }).compose(SchedulerTransformer.create())
                 .subscribe(new ObserverContainer<>(compositeDisposable, new BaseObserver<List<Location>>() {
                     @Override
                     public void onSucceed(List<Location> locationList) {

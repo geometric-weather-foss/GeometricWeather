@@ -4,6 +4,7 @@
     <!-- Chinese source. -->
     <string-array name="weather_sources">
         <item>Accuweather.com</item>
+        <item>Météo France (beta)</item>
     </string-array>
 
     <!-- Location service. -->

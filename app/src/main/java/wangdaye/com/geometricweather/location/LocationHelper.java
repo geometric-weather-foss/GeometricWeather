@@ -19,6 +19,7 @@ import wangdaye.com.geometricweather.location.service.LocationService;
 import wangdaye.com.geometricweather.settings.SettingsOptionManager;
 import wangdaye.com.geometricweather.utils.NetworkUtils;
 import wangdaye.com.geometricweather.weather.service.AccuWeatherService;
+import wangdaye.com.geometricweather.weather.service.MfWeatherService;
 import wangdaye.com.geometricweather.weather.service.WeatherService;
 
 /**
@@ -28,6 +29,7 @@ import wangdaye.com.geometricweather.weather.service.WeatherService;
 public class LocationHelper {
 
     @NonNull private final LocationService locationService;
+    @NonNull private final WeatherService mfWeather;
     @NonNull private final WeatherService accuWeather;
 
     public LocationHelper(Context context) {
@@ -38,6 +40,7 @@ public class LocationHelper {
         }
 
         accuWeather = new AccuWeatherService();
+        mfWeather = new MfWeatherService();
     }
 
     public void requestLocation(Context context, Location location, boolean background,
@@ -92,12 +95,17 @@ public class LocationHelper {
                 location.setWeatherSource(WeatherSource.ACCU);
                 accuWeather.requestLocation(context, location, new AccuLocationCallback(context, location, l));
                 break;
+            case MF:
+                location.setWeatherSource(WeatherSource.MF);
+                mfWeather.requestLocation(context, location, new MfLocationCallback(context, location, l));
+                break;
         }
     }
 
     public void cancel() {
         locationService.cancel();
         accuWeather.cancel();
+        mfWeather.cancel();
     }
 
     public String[] getPermissions(boolean background) {
@@ -135,6 +143,36 @@ class AccuLocationCallback implements WeatherService.RequestLocationCallback {
     private LocationHelper.OnRequestLocationListener listener;
 
     AccuLocationCallback(Context context, Location location,
+                         @NonNull LocationHelper.OnRequestLocationListener l) {
+        this.context = context;
+        this.location = location;
+        this.listener = l;
+    }
+
+    @Override
+    public void requestLocationSuccess(String query, List<Location> locationList) {
+        if (locationList.size() > 0) {
+            Location location = locationList.get(0).setCurrentPosition();
+            DatabaseHelper.getInstance(context).writeLocation(location);
+            listener.requestLocationSuccess(location);
+        } else {
+            requestLocationFailed(query);
+        }
+    }
+
+    @Override
+    public void requestLocationFailed(String query) {
+        listener.requestLocationFailed(location);
+    }
+}
+
+class MfLocationCallback implements WeatherService.RequestLocationCallback {
+
+    private Context context;
+    private Location location;
+    private LocationHelper.OnRequestLocationListener listener;
+
+    MfLocationCallback(Context context, Location location,
                          @NonNull LocationHelper.OnRequestLocationListener l) {
         this.context = context;
         this.location = location;

@@ -90,6 +90,9 @@ public class OptionMapper {
 
     public static WeatherSource getWeatherSource(String value) {
         switch (value) {
+            case "mf":
+                return WeatherSource.MF;
+
             default:
                 return WeatherSource.ACCU;
         }
@@ -114,7 +117,7 @@ public class OptionMapper {
                 return DarkMode.AUTO;
         }
     }
-    
+
     public static TemperatureUnit getTemperatureUnit(String value) {
         switch (value) {
             case "f":
@@ -122,7 +125,7 @@ public class OptionMapper {
 
             case "k":
                 return TemperatureUnit.K;
-                
+
             default:
                 return TemperatureUnit.C;
         }
@@ -203,12 +206,12 @@ public class OptionMapper {
                 return SpeedUnit.KPH;
         }
     }
-    
+
     public static UIStyle getUIStyle(String value) {
         switch (value) {
             case  "circular":
                 return UIStyle.CIRCULAR;
-                
+
             default:
                 return UIStyle.MATERIAL;
         }
@@ -341,7 +344,7 @@ public class OptionMapper {
         }
         return builder.toString().replace(",", ", ");
     }
-    
+
     public static Language getLanguage(String value) {
         switch (value) {
             case "chinese":
