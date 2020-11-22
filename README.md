@@ -34,6 +34,10 @@ use your device's built in location service.
 I was inspired to do this from [this issue thread](https://github.com/WangDaYeeeeee/GeometricWeather/issues/9) 
 for an F-Droid version. Hopefully, this helps the cause along.
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.mbestavros.geometricweather/)
+
 ## Versions
 
 I've elected to produce two versions of the app:
