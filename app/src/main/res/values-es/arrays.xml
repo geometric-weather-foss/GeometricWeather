@@ -7,14 +7,12 @@
 
     <!-- Chinese source. -->
     <string-array name="weather_sources">
-        <item>weather.com.cn (Solo para China)</item>
-        <item>caiyun.com (Solo para China)</item>
         <item>accuweather.com</item>
+        <item>Météo France (beta)</item>
     </string-array>
     <string-array name="weather_source_values">
-        <item>cn</item>
-        <item>caiyun</item>
         <item>accu</item>
+        <item>mf</item>
     </string-array>
 
     <!-- Location service. -->
