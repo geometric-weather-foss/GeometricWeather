@@ -51,6 +51,7 @@
     <!-- notification style. -->
     <string-array name="notification_styles">
         <item>Native</item>
+        <item>Villes</item>
         <item>@string/geometric_weather</item><!-- do not translate. -->
     </string-array>
 
