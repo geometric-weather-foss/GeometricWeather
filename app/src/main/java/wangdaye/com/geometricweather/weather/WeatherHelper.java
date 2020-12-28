@@ -6,7 +6,6 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
@@ -14,6 +13,7 @@ import wangdaye.com.geometricweather.basic.model.location.Location;
 import wangdaye.com.geometricweather.basic.model.option.provider.WeatherSource;
 import wangdaye.com.geometricweather.basic.model.weather.Weather;
 import wangdaye.com.geometricweather.db.DatabaseHelper;
+import wangdaye.com.geometricweather.settings.SettingsOptionManager;
 import wangdaye.com.geometricweather.weather.observer.BaseObserver;
 import wangdaye.com.geometricweather.weather.observer.ObserverContainer;
 import wangdaye.com.geometricweather.weather.service.AccuWeatherService;
@@ -76,29 +76,10 @@ public class WeatherHelper {
     }
 
     public void requestLocation(Context context, String query, @NonNull final OnRequestLocationListener l) {
-        searchServices = new WeatherService[] {
-                getWeatherService(WeatherSource.ACCU),
-                getWeatherService(WeatherSource.MF)
-        };
+        Observable<List<Location>> searchList = Observable.create(emitter ->
+                emitter.onNext(getWeatherService(SettingsOptionManager.getInstance(context).getWeatherSource()).requestLocation(context, query)));
 
-        Observable<List<Location>> accu = Observable.create(emitter ->
-                emitter.onNext(searchServices[0].requestLocation(context, query)));
-
-        Observable<List<Location>> mf = Observable.create(emitter ->
-                emitter.onNext(searchServices[1].requestLocation(context, query)));
-
-        Observable.zip(accu, mf, (accuList, mfList) -> {
-            List<Location> locationList = new ArrayList<>();
-            locationList.addAll(accuList);
-            List<Location> mfListFiltered = new ArrayList<>();
-            for (Location mfLoc : mfList) {
-                if (mfLoc.getCityId() != null) {
-                    mfListFiltered.add(mfLoc);
-                }
-            }
-            locationList.addAll(mfListFiltered);
-            return locationList;
-        }).compose(SchedulerTransformer.create())
+        searchList.compose(SchedulerTransformer.create())
                 .subscribe(new ObserverContainer<>(compositeDisposable, new BaseObserver<List<Location>>() {
                     @Override
                     public void onSucceed(List<Location> locationList) {

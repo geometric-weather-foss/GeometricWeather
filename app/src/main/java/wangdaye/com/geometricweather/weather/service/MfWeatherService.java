@@ -202,7 +202,9 @@ public class MfWeatherService extends WeatherService {
         List<Location> locationList = new ArrayList<>();
         if (resultList != null && resultList.size() != 0) {
             for (MfLocationResult r : resultList) {
-                locationList.add(MfResultConverter.convert(null, r));
+                if (r.postCode != null) {
+                    locationList.add(MfResultConverter.convert(null, r));
+                }
             }
         }
         return locationList;
@@ -255,7 +257,9 @@ public class MfWeatherService extends WeatherService {
                         if (mfLocationResults != null && mfLocationResults.size() != 0) {
                             List<Location> locationList = new ArrayList<>();
                             for (MfLocationResult r : mfLocationResults) {
-                                locationList.add(MfResultConverter.convert(null, r));
+                                if (r.postCode != null) {
+                                    locationList.add(MfResultConverter.convert(null, r));
+                                }
                             }
                             // FIXME: Caching geo position
                             finalCallback.requestLocationSuccess(
@@ -284,7 +288,9 @@ public class MfWeatherService extends WeatherService {
                         if (mfLocationResults != null && mfLocationResults.size() != 0) {
                             List<Location> locationList = new ArrayList<>();
                             for (MfLocationResult r : mfLocationResults) {
-                                locationList.add(MfResultConverter.convert(null, r));
+                                if (r.postCode != null) {
+                                    locationList.add(MfResultConverter.convert(null, r));
+                                }
                             }
                             callback.requestLocationSuccess(query, locationList);
                         } else {

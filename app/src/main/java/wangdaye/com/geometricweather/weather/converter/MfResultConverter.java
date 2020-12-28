@@ -23,7 +23,7 @@ public class MfResultConverter {
                 && !TextUtils.isEmpty(location.getCity())
                 && !TextUtils.isEmpty(location.getDistrict())) {
             return new Location(
-                    result.insee, // cityId
+                    result.postCode, // cityId
                     (float) result.lat,
                     (float) result.lon,
                     TimeZone.getTimeZone("Europe/Paris"), // TODO
@@ -45,7 +45,7 @@ public class MfResultConverter {
             );
         } else {
             return new Location(
-                    result.insee, // cityId
+                    result.postCode, // cityId
                     (float) result.lat,
                     (float) result.lon,
                     TimeZone.getTimeZone("Europe/Paris"), // TODO
