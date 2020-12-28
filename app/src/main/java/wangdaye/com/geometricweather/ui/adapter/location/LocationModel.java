@@ -72,7 +72,8 @@ public class LocationModel {
 
         if (!location.isCurrentPosition() || location.isUsable()) {
             builder = new StringBuilder(location.getCountry() + " " + location.getProvince());
-            if (!location.getProvince().equals(location.getCity())
+            if (location.getProvince() != null
+                    && !location.getProvince().equals(location.getCity())
                     && !TextUtils.isEmpty(location.getCity())) {
                 builder.append(" ").append(location.getCity());
             }

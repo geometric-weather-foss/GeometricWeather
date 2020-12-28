@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
@@ -89,7 +90,13 @@ public class WeatherHelper {
         Observable.zip(accu, mf, (accuList, mfList) -> {
             List<Location> locationList = new ArrayList<>();
             locationList.addAll(accuList);
-            locationList.addAll(mfList);
+            List<Location> mfListFiltered = new ArrayList<>();
+            for (Location mfLoc : mfList) {
+                if (mfLoc.getCityId() != null) {
+                    mfListFiltered.add(mfLoc);
+                }
+            }
+            locationList.addAll(mfListFiltered);
             return locationList;
         }).compose(SchedulerTransformer.create())
                 .subscribe(new ObserverContainer<>(compositeDisposable, new BaseObserver<List<Location>>() {
