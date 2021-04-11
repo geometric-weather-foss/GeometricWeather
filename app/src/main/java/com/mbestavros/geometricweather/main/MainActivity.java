@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.FragmentTransaction;
@@ -164,6 +165,7 @@ public class MainActivity extends GeoActivity
 
         initModel();
         initView();
+        new AlertDialog.Builder(this).setTitle("This app is no longer supported!").setMessage("The work done to make this app F-Droid ready has been upstreamed into the original app, rendering this forked version obsolete. Get the upstream app to receive new updates and features, including new weather APIs.\n\nThe new app is available here: https://www.google.com").setNeutralButton("OK", null).show();
 
         registerReceiver(
                 backgroundUpdateReceiver,
