@@ -1,5 +1,7 @@
+<b>THIS APP IS NO LONGER BEING MAINTAINED. THE WORK CONTAINED IN THIS FORK HAS BEEN UPSTREAMED, AND IS AVAILABLE IN THE NEWLY-AVAILABLE UPSTREAM APP <a href="https://f-droid.org/packages/wangdaye.com.geometricweather">HERE.</a> DOWNLOAD THE NEW APP TO RECEIVE NEW UPDATES, INCLUDING NEW WEATHER APIS.</b>
+<b>The original description follows.</b>
 Geometric Weather FOSS is a free and open-source Android weather app.
-It's a fork of the <a href="https://github.com/WangDaYeeeeee/GeometricWeather">original Geometric Weather app</a> with all proprietary dependencies and related code stripped out to make it eligible for inclusion on F-Droid.
+It's a fork of the <a href="https://github.com/WangDaYeeeeee/GeometricWeather">original Geometric Weather app</a> with all proprietary dependencies and related code stripped out to make it eligible for inclusion on F-Droid. As of April 2021, this work has been upstreamed into the original app, rendering this fork obsolete. The new version is available <a href="https://f-droid.org/packages/wangdaye.com.geometricweather">here.</a>
 In the app, you'll find:<ul>
 <li>Real-time temperature</li>
 <li>Daily forecasts up to 15 days, and hourly forecasts for the next 24 hours</li>
@@ -10,5 +12,5 @@ The app has a strong focus on design, with a simple, clean UX, smooth animations
 <li>Custom icon themes</li>
 <li>Large selection of home screen widgets for at-a-glance information</li>
 <li>Live wallpaper</li></ul>
-At present, AccuWeather is the only supported weather API for the FOSS version.
-There's an option to donate to the original, upstream developer <a href="https://github.com/WangDaYeeeeee">(WangDaYeeeeee on Github)</a> within the app. <a href="https://github.com/mbestavros/GeometricWeather">This FOSS fork</a> is maintained by <a href="https://github.com/mbestavros">mbestavros.</a>
+AccuWeather is the only supported weather API for this version.
+There's an option to donate to the original, upstream developer <a href="https://github.com/WangDaYeeeeee">(WangDaYeeeeee on Github)</a> within the app. <a href="https://github.com/mbestavros/GeometricWeather">This FOSS fork</a> was maintained by <a href="https://github.com/mbestavros">mbestavros.</a>

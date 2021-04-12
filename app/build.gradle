@@ -8,8 +8,8 @@ android {
         versionNameSuffix "-foss"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 26068
-        versionName "2.608"
+        versionCode 26100
+        versionName "2.610"
         multiDexEnabled true
         ndk {
             abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'

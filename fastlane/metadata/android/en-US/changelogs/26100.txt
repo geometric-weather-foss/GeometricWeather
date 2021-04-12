@@ -1,0 +1,1 @@
+<b>DEPRECATION NOTICE: This app is no longer being maintained. All relevant work done has been upstreamed, and the upstream app is now available on F-Droid <a href="https://f-droid.org/packages/wangdaye.com.geometricweather">here.</a> Download that app to continue receiving new updates, including new weather APIs.</b>

@@ -1,1 +1,1 @@
-A lightweight, powerful, open-source Material Design weather app.
+NO LONGER SUPPORTED: please use the upstream version (linked in description)

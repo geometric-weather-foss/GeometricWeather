@@ -2,6 +2,10 @@
 
 ![Geometric Weather](https://github.com/WangDaYeeeeee/GeometricWeather/blob/master/work/preview_header.png)
 
+## PLEASE NOTE: THIS FORK IS NO LONGER BEING MAINTAINED
+
+**ALL RELEVANT WORK AROUND F-DROID READINESS HAS BEEN UPSTREAMED, RENDERING A SEPARATE FORK OBSOLETE. THE UPSTREAM APP HAS BEEN APPROVED ON F-DROID, AND CAN BE FOUND [HERE](https://f-droid.org/packages/wangdaye.com.geometricweather). THE ORIGINAL README CONTINUES BELOW FOR POSTERITY.**
+
 From the original app's
 [Play Store](https://play.google.com/store/apps/details?id=wangdaye.com.geometricweather)
 description:
